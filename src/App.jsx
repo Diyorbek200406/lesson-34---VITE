@@ -1,8 +1,19 @@
+// style import
 import "./App.css";
+// Components import
+import Footer from "./components/footer/Footer";
+import Navbar from "./components/navbar/Navbar";
+
+// function arrow
+
 function App() {
   return (
     <div className="App">
-      <h1>My First Vite Project</h1>
+      <Navbar />
+      <main>
+        <h2>Content</h2>
+      </main>
+      <Footer />
     </div>
   );
 }
