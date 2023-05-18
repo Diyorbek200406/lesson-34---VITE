@@ -8,7 +8,7 @@ const UserList = ({ users }) => {
   return (
     <div className="userList">
       <div className="userList-container">
-        
+        <h3>Hello world</h3>
       </div>
     </div>
   );
