@@ -11,11 +11,19 @@ const TripList = () => {
   //
   //
   const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/users");
-  const { data: trips } = useFetch(url);
+  const { data: trips, isPending } = useFetch(url);
   //
   //
   //
   console.log("effect");
+
+  if (isPending) {
+    return (
+      <div className="loading">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
 
   //
   //
