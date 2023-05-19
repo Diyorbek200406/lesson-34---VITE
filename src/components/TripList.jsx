@@ -11,7 +11,7 @@ const TripList = () => {
   //
   //
   const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/users");
-  const { data: trips, isPending } = useFetch(url);
+  const { data: trips, isPending, error } = useFetch(url);
   //
   //
   //
@@ -21,6 +21,13 @@ const TripList = () => {
     return (
       <div className="loading">
         <h1>Loading...</h1>
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <div className="loading">
+        <h1>Error {error}</h1>
       </div>
     );
   }
