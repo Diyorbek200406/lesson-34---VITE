@@ -1,38 +1,38 @@
-import { useEffect, useState, useCallback } from "react";
+// style
 import "./tripList.css";
+// package
+import { useState } from "react";
+import { useFetch } from "../hooks/useFetch";
+//
+//
+//
 const TripList = () => {
-  const [trips, setTrips] = useState([]);
+  //
+  //
+  //
   const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/users");
+  const { data: trips } = useFetch(url);
+  //
+  //
+  //
   console.log("effect");
 
-  // useCallback functionlarni xotiraga saqlaydi
-
-  const fetchTrips = useCallback(async () => {
-    try {
-      const res = await fetch(url);
-      const data = await res.json();
-      setTrips(data);
-    } catch (error) {
-      console.log(error);
-    }
-  }, [url]);
-
-  useEffect(() => {
-    fetchTrips();
-  }, [fetchTrips]);
-
+  //
+  //
+  //
   return (
     <div className="trip-list">
       <h1>Users</h1>
       <ul>
-        {trips.map((item) => {
-          return (
-            <li key={item.id}>
-              <span>{item.id} </span>
-              <span>{item.name}</span>
-            </li>
-          );
-        })}
+        {trips &&
+          trips.map((item) => {
+            return (
+              <li key={item.id}>
+                <span>{item.id} </span>
+                <span>{item.name}</span>
+              </li>
+            );
+          })}
       </ul>
       <div className="filters">
         <button
