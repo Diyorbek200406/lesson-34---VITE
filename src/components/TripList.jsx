@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-
+import './tripList.css'
 const TripList = () => {
   const [trips, setTrips] = useState([]);
-  console.log(trips);
   useEffect(() => {
     try {
       fetch("https://jsonplaceholder.typicode.com/users")
@@ -14,8 +13,18 @@ const TripList = () => {
   }, []);
 
   return (
-    <div>
-      <h1>TripList</h1>
+    <div className="trip-list">
+      <h1>Users</h1>
+      <ul>
+        {trips.map( (item) => {
+          return (
+            <li key={item.id}>
+              <span>{item.id} </span>
+              <span>{item.name}</span>
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 };
