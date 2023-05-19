@@ -1,18 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import "./tripList.css";
 const TripList = () => {
   const [trips, setTrips] = useState([]);
   const [url, setUrl] = useState("https://jsonplaceholder.typicode.com/users");
   console.log("effect");
-  useEffect(() => {
+
+  // useCallback functionlarni xotiraga saqlaydi
+
+  const fetchTrips = useCallback(async () => {
     try {
-      fetch(url)
-        .then((res) => res.json())
-        .then((data) => setTrips(data));
+      const res = await fetch(url);
+      const data = await res.json();
+      setTrips(data);
     } catch (error) {
       console.log(error);
     }
   }, [url]);
+
+  useEffect(() => {
+    fetchTrips();
+  }, [fetchTrips]);
 
   return (
     <div className="trip-list">
